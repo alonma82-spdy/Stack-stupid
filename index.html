@@ -29,4 +29,8 @@ ctx.fillStyle='#8ed9ff';ctx.fillRect(0,0,W,H);
 
 /* Build diagnostics: accessible in console as window.stackStupidDiagnostics(). */
 window.stackStupidDiagnostics=()=>({version:'v1-audit',running,paused,score:points,height:tower.length,hearts:lives,combo,missionsDone,nearMisses,unlockedAnimals:Math.min(animals.length,4+Math.floor(Number(localStorage.getItem('stackstupidruns')||0)/3)),spriteSystem:'procedural-svg-placeholders',referenceArtIntegrated:false,screenCountVerified:0,realDeviceTested:false});
-</script></html>
+</script>
+<script id="build-smoke-test">
+window.runStackSmokeTest=async function(){const result=[];const check=(name,pass)=>result.push({name,pass:!!pass});check('canvas exists',!!document.querySelector('#game'));check('play button exists',!!document.querySelector('#play'));check('title visible',!!document.querySelector('#overlay h1'));check('animal sprite generator exists',typeof sprite==='function');check('skyline renderer exists',typeof drawCity==='function');check('blanket renderer exists',typeof drawBlanket==='function');check('touch controls installed',typeof moveX==='number');check('build diagnostics available',typeof window.stackStupidDiagnostics==='function');return {passed:result.filter(x=>x.pass).length,total:result.length,results:result,artworkAccepted:false,mobileDeviceTested:false}};
+</script>
+</html>
