@@ -26,4 +26,7 @@ drawBlanket(baseX,ground+camera+size*.02,size);for(let i=0;i<tower.length;i++){l
 if(fall)drawAnimal(fall.x,fall.y,size,fall.type,fall.pose,Math.sin(fall.angle)*.22);
 for(let p of particles){ctx.globalAlpha=Math.min(1,p.life);ctx.fillStyle=p.color;ctx.fillRect(p.x,p.y,7,7)}ctx.globalAlpha=1;ctx.restore();document.querySelector('#combo').textContent=combo>=2?'🔥 x'+Math.min(combo,8):'✨ x1';document.querySelector('#hearts').textContent='❤️'.repeat(lives)+'🖤'.repeat(3-lives);document.querySelector('#score').textContent=points+' pts · '+tower.length+' m';requestAnimationFrame(frame)}
 ctx.fillStyle='#8ed9ff';ctx.fillRect(0,0,W,H);
+
+/* Build diagnostics: accessible in console as window.stackStupidDiagnostics(). */
+window.stackStupidDiagnostics=()=>({version:'v1-audit',running,paused,score:points,height:tower.length,hearts:lives,combo,missionsDone,nearMisses,unlockedAnimals:Math.min(animals.length,4+Math.floor(Number(localStorage.getItem('stackstupidruns')||0)/3)),spriteSystem:'procedural-svg-placeholders',referenceArtIntegrated:false,screenCountVerified:0,realDeviceTested:false});
 </script></html>
